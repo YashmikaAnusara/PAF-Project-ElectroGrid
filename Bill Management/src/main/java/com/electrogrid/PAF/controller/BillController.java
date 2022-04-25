@@ -10,7 +10,7 @@ import java.util.HashMap;
 
 /*
  *default Port : 8050
- *http://localhost:8050/api/v1/bill/*
+ *http://localhost:8050/billservice/*
  */
 @Path("/billservice")
 public class BillController {
