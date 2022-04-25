@@ -57,7 +57,7 @@ public class PaymentController {
 
     @GET
     @Path("/{paymentId}")
-    @Consumes(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.TEXT_PLAIN)
     @Produces(MediaType.APPLICATION_JSON)
     public Response getPaymentById(@PathParam("paymentId") Integer paymentId) {
         return paymentService.getPaymentById(paymentId);
@@ -65,7 +65,7 @@ public class PaymentController {
 
     @DELETE
     @Path("/{paymentId}")
-    @Consumes(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.TEXT_PLAIN)
     @Produces(MediaType.APPLICATION_JSON)
     public Response deleteById(@PathParam("paymentId") Integer paymentId) {
         return paymentService.deletePayment(paymentId);
