@@ -23,11 +23,12 @@ public class UserController {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Response addUser(HashMap<String, ?> userData) {
-        String nic = (String) userData.get("nic");
-        String name = (String) userData.get("name");
-        String city = (String) userData.get("city");
-        String number = (String) userData.get("number");
-        user = new User(nic, name, city, number);
+        String fname = (String) userData.get("fname");
+        String lname = (String) userData.get("lname");
+        String address = (String) userData.get("address");
+        String email = (String) userData.get("email");
+        String contact = (String) userData.get("contact");
+        user = new User(fname, lname, address, email, contact);
 
         return userService.addUser(user);
     }
@@ -37,11 +38,12 @@ public class UserController {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Response updateUser(HashMap<String, ?> userData, @PathParam("userId") Integer userId) {
-        String nic = (String) userData.get("nic");
-        String name = (String) userData.get("name");
-        String city = (String) userData.get("city");
-        String number = (String) userData.get("number");
-        user = new User(nic, name, city, number);
+        String fname = (String) userData.get("fname");
+        String lname = (String) userData.get("lname");
+        String address = (String) userData.get("address");
+        String email = (String) userData.get("email");
+        String contact = (String) userData.get("contact");
+        user = new User(fname, lname, address, email, contact);
         user.setId(userId);
 
         return userService.updateUser(user);
