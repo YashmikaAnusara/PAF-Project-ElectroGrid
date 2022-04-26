@@ -23,13 +23,14 @@ public class PaymentService {
 					.entity("DataBase connectivity Error")
 					.build();
 
-			String query = "INSERT INTO payment(nic, month, price, date) VALUES (?, ?, ?, ?)";
+			String query = "INSERT INTO payment(paid, cvv, name, date,amount) VALUES (?, ?, ?, ?, ?)";
 			PreparedStatement preparedStmt = con.prepareStatement(query, PreparedStatement.RETURN_GENERATED_KEYS);
 
-			preparedStmt.setString(1, payment.getNic());
-			preparedStmt.setString(2, payment.getMonth());
-			preparedStmt.setString(3, payment.getPrice());
+			preparedStmt.setString(1, payment.getPaid());
+			preparedStmt.setString(2, payment.getCvv());
+			preparedStmt.setString(3, payment.getName());
 			preparedStmt.setString(4, payment.getDate());
+			preparedStmt.setString(5, payment.getAmount());
 
 			preparedStmt.execute();
 			ResultSet rs = preparedStmt.getGeneratedKeys();
@@ -67,11 +68,12 @@ public class PaymentService {
 
 			while (rs.next()) {
 				int id = rs.getInt("id");
-				String nic = rs.getString("nic");
-				String month = rs.getString("month");
-				String price = rs.getString("price");
+				String paid = rs.getString("paid");
+				String cvv = rs.getString("cvv");
+				String name = rs.getString("name");
 				String date = rs.getString("date");
-				Payment payment = new Payment(nic, month, price, date);
+				String amount = rs.getString("amount");
+				Payment payment = new Payment(paid, cvv, name, date,amount);
 				payment.setId(id);
 				payments.add(payment);
 
@@ -107,11 +109,12 @@ public class PaymentService {
 
 			while (rs.next()) {
 				int id = rs.getInt("id");
-				String nic = rs.getString("nic");
-				String month = rs.getString("month");
-				String price = rs.getString("price");
+				String paid = rs.getString("paid");
+				String cvv = rs.getString("cvv");
+				String name = rs.getString("name");
 				String date = rs.getString("date");
-				payment = new Payment(nic, month, price, date);
+				String amount = rs.getString("amount");
+				payment = new Payment(paid, cvv, name, date,amount);
 				payment.setId(id);
 			}
 			con.close();
@@ -167,14 +170,15 @@ public class PaymentService {
 					.entity("DataBase connectivity Error")
 					.build();
 
-			String query = "UPDATE payment SET nic=?, month=?, price=?, date=? WHERE id=?";
+			String query = "UPDATE payment SET paid=?, cvv=?, name=?, date=?, amount=? WHERE id=?";
 			PreparedStatement preparedStmt = con.prepareStatement(query);
 
-			preparedStmt.setString(1, payment.getNic());
-			preparedStmt.setString(2, payment.getMonth());
-			preparedStmt.setString(3, payment.getPrice());
+			preparedStmt.setString(1, payment.getPaid());
+			preparedStmt.setString(2, payment.getCvv());
+			preparedStmt.setString(3, payment.getName());
 			preparedStmt.setString(4, payment.getDate());
-			preparedStmt.setInt(5, payment.getId());
+			preparedStmt.setString(5, payment.getAmount());
+			preparedStmt.setInt(6, payment.getId());
 
 			preparedStmt.execute();
 			con.close();

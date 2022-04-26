@@ -24,11 +24,12 @@ public class PaymentController {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Response addPayment(HashMap<String, ?> paymentData) {
-        String nic = (String) paymentData.get("nic");
-        String month = (String) paymentData.get("month");
-        String price = (String) paymentData.get("price");
+        String paid = (String) paymentData.get("paid");
+        String cvv = (String) paymentData.get("cvv");
+        String name = (String) paymentData.get("name");
         String date = (String) paymentData.get("date");
-        payment = new Payment(nic, month, price, date);
+        String amount = (String) paymentData.get("amount");
+        payment = new Payment(paid, cvv, name, date,amount);
 
         return paymentService.addPayment(payment);
     }
@@ -38,11 +39,12 @@ public class PaymentController {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Response updatePayment(HashMap<String, ?> paymentData, @PathParam("paymentId") Integer paymentId) {
-        String nic = (String) paymentData.get("nic");
-        String month = (String) paymentData.get("month");
-        String price = (String) paymentData.get("price");
+        String paid = (String) paymentData.get("paid");
+        String cvv = (String) paymentData.get("cvv");
+        String name = (String) paymentData.get("name");
         String date = (String) paymentData.get("date");
-        payment = new Payment(nic, month, price, date);
+        String amount = (String) paymentData.get("amount");
+        payment = new Payment(paid, cvv, name, date,amount);
         payment.setId(paymentId);
 
         return paymentService.updatePayment(payment);
@@ -57,7 +59,7 @@ public class PaymentController {
 
     @GET
     @Path("/{paymentId}")
-    @Consumes(MediaType.TEXT_PLAIN)
+    @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Response getPaymentById(@PathParam("paymentId") Integer paymentId) {
         return paymentService.getPaymentById(paymentId);
@@ -65,7 +67,7 @@ public class PaymentController {
 
     @DELETE
     @Path("/{paymentId}")
-    @Consumes(MediaType.TEXT_PLAIN)
+    @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Response deleteById(@PathParam("paymentId") Integer paymentId) {
         return paymentService.deletePayment(paymentId);

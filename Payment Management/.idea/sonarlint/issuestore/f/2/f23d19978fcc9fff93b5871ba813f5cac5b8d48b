@@ -1,0 +1,18 @@
+
+t
+java:S22938"YReplace the type specification in this constructor call with the diamond operator ("<>").(æÜØÀùÿÿÿÿ
+r
+java:S1192"\Define a constant instead of duplicating this literal "DataBase connectivity Error" 5 times.(¯Åİ¹
+o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(øŒ…è
+b
+java:S2095B"GUse try-with-resources or close this "Statement" in a "finally" clause.(íñéşÿÿÿÿ
+b
+java:S2095k"GUse try-with-resources or close this "Statement" in a "finally" clause.(íñéşÿÿÿÿ
+k
+java:S2095®"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(Ş¿îğúÿÿÿÿ
+j
+java:S2095"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(ÏÂªÑüÿÿÿÿ
+k
+java:S2095"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(Ş¿îğúÿÿÿÿ
+c
+java:S3252"HUse static access with "java.sql.Statement" for "RETURN_GENERATED_KEYS".(ÏÂªÑüÿÿÿÿ
