@@ -9,23 +9,27 @@ public class User {
     @Column(name = "id")
     private int id;
     @Basic
-    @Column(name = "nic")
-    private String nic;
+    @Column(name = "fname")
+    private String fname;
     @Basic
-    @Column(name = "name")
-    private String name;
+    @Column(name = "lname")
+    private String lname;
     @Basic
-    @Column(name = "city")
-    private String city;
+    @Column(name = "address")
+    private String address;
     @Basic
-    @Column(name = "number")
-    private String number;
+    @Column(name = "email")
+    private String email;
+    @Basic
+    @Column(name = "contact")
+    private String contact;
 
-    public User(String nic, String name, String city, String number) {
-        this.nic = nic;
-        this.name = name;
-        this.city = city;
-        this.number = number;
+    public User(String fname, String lname, String address, String email, String contact) {
+        this.fname = fname;
+        this.lname = lname;
+        this.address = address;
+        this.email = email;
+        this.contact = contact;
     }
 
     public User() {
@@ -40,36 +44,44 @@ public class User {
         this.id = id;
     }
 
-    public String getNic() {
-        return nic;
+    public String getFname() {
+        return fname;
     }
 
-    public void setNic(String nic) {
-        this.nic = nic;
+    public void setFname(String fname) {
+        this.fname = fname;
     }
 
-    public String getName() {
-        return name;
+    public String getLname() {
+        return lname;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setLame(String lname) {
+        this.lname = lname;
     }
 
-    public String getCity() {
-        return city;
+    public String getAddress() {
+        return address;
     }
 
-    public void setCity(String city) {
-        this.city = city;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
-    public String getNumber() {
-        return number;
+    public String getEmail() {
+        return email;
     }
 
-    public void setNumber(String number) {
-        this.number = number;
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getContact() {
+        return contact;
+    }
+
+    public void setContact(String contact) {
+        this.contact = contact;
     }
 
     @Override
@@ -80,10 +92,11 @@ public class User {
         User user = (User) o;
 
         if (id != user.id) return false;
-        if (nic != null ? !nic.equals(user.nic) : user.nic != null) return false;
-        if (name != null ? !name.equals(user.name) : user.name != null) return false;
-        if (city != null ? !city.equals(user.city) : user.city != null) return false;
-        if (number != null ? !number.equals(user.number) : user.number != null) return false;
+        if (fname != null ? !fname.equals(user.fname) : user.fname != null) return false;
+        if (lname != null ? !lname.equals(user.lname) : user.lname != null) return false;
+        if (address != null ? !address.equals(user.address) : user.address != null) return false;
+        if (email != null ? !email.equals(user.email) : user.email != null) return false;
+        if (contact != null ? !contact.equals(user.contact) : user.contact != null) return false;
 
         return true;
     }
@@ -91,10 +104,11 @@ public class User {
     @Override
     public int hashCode() {
         int result = id;
-        result = 31 * result + (nic != null ? nic.hashCode() : 0);
-        result = 31 * result + (name != null ? name.hashCode() : 0);
-        result = 31 * result + (city != null ? city.hashCode() : 0);
-        result = 31 * result + (number != null ? number.hashCode() : 0);
+        result = 31 * result + (fname != null ? fname.hashCode() : 0);
+        result = 31 * result + (lname != null ? lname.hashCode() : 0);
+        result = 31 * result + (address != null ? address.hashCode() : 0);
+        result = 31 * result + (email != null ? email.hashCode() : 0);
+        result = 31 * result + (contact != null ? contact.hashCode() : 0);
         return result;
     }
 }

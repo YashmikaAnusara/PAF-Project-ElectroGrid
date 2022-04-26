@@ -23,13 +23,14 @@ public class UserService {
 					.entity("DataBase connectivity Error")
 					.build();
 
-			String query = "INSERT INTO user(nic, name, city, number) VALUES (?, ?, ?, ?)";
+			String query = "INSERT INTO user(fname, lname, address, email, contact) VALUES (?, ?, ?, ?, ?)";
 			PreparedStatement preparedStmt = con.prepareStatement(query, PreparedStatement.RETURN_GENERATED_KEYS);
 
-			preparedStmt.setString(1, user.getNic());
-			preparedStmt.setString(2, user.getName());
-			preparedStmt.setString(3, user.getCity());
-			preparedStmt.setString(4, user.getNumber());
+			preparedStmt.setString(1, user.getFname());
+			preparedStmt.setString(2, user.getLname());
+			preparedStmt.setString(3, user.getAddress());
+			preparedStmt.setString(4, user.getEmail());
+			preparedStmt.setString(5, user.getContact());
 
 			preparedStmt.execute();
 			ResultSet rs = preparedStmt.getGeneratedKeys();
@@ -67,11 +68,12 @@ public class UserService {
 
 			while (rs.next()) {
 				int id = rs.getInt("id");
-				String nic = rs.getString("nic");
-				String name = rs.getString("name");
-				String city = rs.getString("city");
-				String number = rs.getString("number");
-				User user = new User(nic, name, city, number);
+				String fname = rs.getString("fname");
+				String lname = rs.getString("lname");
+				String address = rs.getString("address");
+				String email = rs.getString("email");
+				String contact = rs.getString("contact");
+				User user = new User(fname, lname, address, email, contact);
 				user.setId(id);
 				users.add(user);
 
@@ -107,11 +109,12 @@ public class UserService {
 
 			while (rs.next()) {
 				int id = rs.getInt("id");
-				String nic = rs.getString("nic");
-				String name = rs.getString("name");
-				String city = rs.getString("city");
-				String number = rs.getString("number");
-				user = new User(nic, name, city, number);
+				String fname = rs.getString("fname");
+				String lname = rs.getString("lname");
+				String address = rs.getString("address");
+				String email = rs.getString("email");
+				String contact = rs.getString("contact");
+				user = new User(fname, lname, address, email, contact);
 				user.setId(id);
 			}
 			con.close();
@@ -154,7 +157,7 @@ public class UserService {
 
 		return Response
 				.status(Response.Status.OK)
-				.entity("Product User deleted successfully")
+				.entity("User deleted successfully")
 				.build();
 	}
 
@@ -167,14 +170,15 @@ public class UserService {
 					.entity("DataBase connectivity Error")
 					.build();
 
-			String query = "UPDATE user SET nic=?, name=?, city=?, number=? WHERE id=?";
+			String query = "UPDATE user SET fname=?, lname=?, address=?, email=?, contact=? WHERE id=?";
 			PreparedStatement preparedStmt = con.prepareStatement(query);
 
-			preparedStmt.setString(1, user.getNic());
-			preparedStmt.setString(2, user.getName());
-			preparedStmt.setString(3, user.getCity());
-			preparedStmt.setString(4, user.getNumber());
-			preparedStmt.setInt(5, user.getId());
+			preparedStmt.setString(1, user.getFname());
+			preparedStmt.setString(2, user.getLname());
+			preparedStmt.setString(3, user.getAddress());
+			preparedStmt.setString(4, user.getEmail());
+			preparedStmt.setString(5, user.getContact());
+			preparedStmt.setInt(6, user.getId());
 
 			preparedStmt.execute();
 			con.close();
